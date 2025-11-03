@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Hub - Flashcards & Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <h1>📚 Study Hub</h1>
+            <p class="login-subtitle">Your personal learning companion | By Nabhan Khan</p>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" onclick="switchLoginTab('login')">Login</div>
+                <div class="login-tab" onclick="switchLoginTab('signup')">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <p class="auth-message" id="loginMessage"></p>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form" style="display: none;" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Sign Up</button>
+                <p class="auth-message" id="signupMessage"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App (Hidden by default) -->
+    <div id="mainApp" class="container" style="display: none;">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>📚 Study Hub</h1>
+                    <p>Your personal learning companion | By Nabhan Khan</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-name" id="userName"></span>
+                    <button class="logout-btn" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('dashboard')">Dashboard</div>
+            <div class="tab" onclick="switchTab('flashcards')">Flashcards</div>
+            <div class="tab" onclick="switchTab('notes')">Notes</div>
+            <div class="tab" onclick="switchTab('create')">Create New</div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="content-section active">
+            <h2 style="margin-bottom: 20px; color: #40e0d0;">Your Progress</h2>
+            <div class="subject-grid" id="subjectGrid"></div>
+        </div>
+
+        <!-- Flashcards -->
+        <div id="flashcards" class="content-section">
+            <div class="controls">
+                <select id="flashcardFilter" onchange="filterFlashcards()">
+                    <option value="all">All Subjects</option>
+                </select>
+            </div>
+            <div id="flashcardsList"></div>
+        </div>
+
+        <!-- Notes -->
+        <div id="notes" class="content-section">
+            <div class="controls">
+                <select id="notesFilter" onchange="filterNotes()">
+                    <option value="all">All Subjects</option>
+                </select>
+            </div>
+            <div id="notesList"></div>
+        </div>
+
+        <!-- Create New -->
+        <div id="create" class="content-section">
+            <h2 style="margin-bottom: 20px; color: #40e0d0;">Create New Content</h2>
+            
+            <div class="tabs" style="margin-bottom: 30px;">
+                <div class="tab active" onclick="switchCreateTab('flashcard')">Flashcard</div>
+                <div class="tab" onclick="switchCreateTab('note')">Note</div>
+            </div>
+
+            <!-- Create Flashcard Form -->
+            <div id="createFlashcard" class="create-form">
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="flashcardSubject" placeholder="e.g., Mathematics, Biology">
+                </div>
+                <div class="form-group">
+                    <label>Question (Front)</label>
+                    <textarea id="flashcardFront" placeholder="Enter your question..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Answer (Back)</label>
+                    <textarea id="flashcardBack" placeholder="Enter the answer..."></textarea>
+                </div>
+                <button onclick="createFlashcard()">Create Flashcard</button>
+            </div>
+
+            <!-- Create Note Form -->
+            <div id="createNote" class="create-form" style="display: none;">
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="noteSubject" placeholder="e.g., Mathematics, Biology">
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="noteTitle" placeholder="Note title...">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea id="noteContent" placeholder="Write your notes here..." style="min-height: 200px;"></textarea>
+                </div>
+                <button onclick="createNote()">Create Note</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
