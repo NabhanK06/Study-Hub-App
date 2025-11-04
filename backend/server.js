@@ -269,9 +269,20 @@ app.get('/api/progress', authenticate, async (req, res) => {
     }
 });
 
+
+app.use((req, res) => {
+    res.status(404).json({ error: 'Route not found' });
+});
+
+app.use((err, req, res, next) => {
+    console.error('Error:', err);
+    res.status(500).json({ error: 'Server error', message: err.message });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
 });
+
 
 
