@@ -12,9 +12,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this';
 
 // Middleware
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? ['https://your-frontend-url.onrender.com'] 
-        : ['http://localhost:5500', 'http://127.0.0.1:5500'],
+    origin: process.env.FRONTEND_URL || '*',
     credentials: true
 }));
 app.use(express.json());
@@ -267,4 +265,5 @@ app.get('/api/progress', authenticate, async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+
 });
