@@ -12,8 +12,15 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this';
 
 // Middleware
 app.use(cors({
-    origin: process.env.FRONTEND_URL || '*',
-    credentials: true
+       origin: [
+           'https://study-hub-app-frontend.onrender.com',
+           'http://localhost:5500',
+           'http://127.0.0.1:5500'
+       ],
+       credentials: true,
+       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+       allowedHeaders: ['Content-Type', 'Authorization']
+   }));
 }));
 app.use(express.json());
 
@@ -267,3 +274,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
 });
+
