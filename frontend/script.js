@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = 'https://study-hub-backend.onrender.com/api';
+const API_URL = 'https://study-hub-app-backend.onrender.com/';
 
 // Data storage
 let data = {
@@ -532,3 +532,4 @@ function filterNotes() {
     updateNotesList();
 
 }
+
