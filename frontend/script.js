@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://study-hub-backend.onrender.com/api';
 
 // Data storage
 let data = {
@@ -530,4 +530,5 @@ function filterFlashcards() {
 
 function filterNotes() {
     updateNotesList();
+
 }
