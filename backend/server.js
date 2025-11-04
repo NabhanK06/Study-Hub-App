@@ -21,7 +21,6 @@ app.use(cors({
        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
        allowedHeaders: ['Content-Type', 'Authorization']
    }));
-}));
 app.use(express.json());
 
 // MongoDB Connection
@@ -274,4 +273,5 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
 });
+
 
